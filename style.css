@@ -14,17 +14,32 @@ body {
   color: white;
 }
 
-.location,
-.temperature {
-  height: 30vh;
+.location-section,
+.temperature-section {
+  height: 25vh;
   width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.temperature {
+.temperature-section {
   flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.temperature-weekly {
+  align-self: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.temperature-weekly div {
+  display: inline-block;
+  flex-grow: 1;
+  flex-basis: auto;
+  font-size: 20px;
+  padding: 10px;
 }
 .degree-section {
   display: flex;
