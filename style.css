@@ -46,6 +46,9 @@ body {
   font-size: 20px;
   padding: 10px;
 }
+.temperature-weekly h2 {
+  cursor: pointer;
+}
 
 .degree-section {
   display: flex;
