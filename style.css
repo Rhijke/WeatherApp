@@ -14,7 +14,7 @@ body {
   color: white;
 }
 .search {
-  height: 15vh;
+  height: 20vh;
 }
 
 .location-section,
@@ -35,7 +35,7 @@ body {
 }
 
 .temperature-weekly {
-  height: 30vh;
+  height: 25vh;
   justify-content: space-around;
   align-items: center;
 }
