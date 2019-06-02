@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="text/javascript" src="config.js"></script>
+    <title>Weather</title>
+  </head>
+  <body>
+    <!-- Search bar code taken from https://codepen.io/menelaosly/pen/rZddyb -->
+    <div class="search">
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous"
+      />
+      <form id="search-form">
+        <input
+          name="search-location"
+          type="text"
+          placeholder="Enter location."
+        />
+        <i class="fa fa-search"></i>
+      </form>
+    </div>
+
+    <div class="location-section">
+      <h1 class="location-timezone">Timezone</h1>
+      <canvas class="icon" width="128" height="128"> </canvas>
+    </div>
+
+    <div class="temperature-section">
+      <div class="degree-section">
+        <h2 class="temperature-degree">34</h2>
+        <span> <h2>F</h2></span>
+        <div class="temperature-description">Cold</div>
+      </div>
+    </div>
+
+    <div class="temperature-weekly">
+      <h2>Weekly Temperature Highs <span>(F)</span></h2>
+
+      <div id="sunday">
+        <h4>Sunday</h4>
+        <p>6</p>
+      </div>
+      <div id="monday">
+        <h4>Monday</h4>
+        <p>8</p>
+      </div>
+      <div id="tuesday">
+        <h4>Tuesday</h4>
+        <p>6</p>
+      </div>
+      <div id="wednesday">
+        <h4>Wednesday</h4>
+        <p>5</p>
+      </div>
+      <div id="thursday">
+        <h4>Thursday</h4>
+        <p>7</p>
+      </div>
+      <div id="friday">
+        <h4>Friday</h4>
+        <p>4</p>
+      </div>
+      <div id="Saturday">
+        <h4>Saturday</h4>
+        <p>4</p>
+      </div>
+    </div>
+    <script src="skycons.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
