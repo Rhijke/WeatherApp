@@ -14,5 +14,10 @@
     "gh-pages": "^2.1.1",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "css-loader": "^3.4.0",
+    "netlify-cli": "^2.25.0",
+    "style-loader": "^1.1.1"
   }
 }
