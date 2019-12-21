@@ -9,21 +9,47 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(rgb(163, 47, 91), rgb(143, 48, 48));
+  background: lightcoral;
   font-family: sans-serif;
   color: white;
 }
 .search {
   height: 20vh;
 }
+@media only screen and (max-width: 400px) {
+    .location-section,
+    .temperature-section {
+    height: 20vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.location-section,
-.temperature-section {
-  height: 20vh;
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  .location-section canvas {
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .temperature-weekly div {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 961px) {
+    .location-section,
+    .temperature-section {
+    height: 20vh;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .temperature-weekly div {
+    flex-direction: row;
+    display: inline-block;
+  }
 }
 
 .temperature-section {
@@ -40,9 +66,6 @@ body {
   align-items: center;
 }
 .temperature-weekly div {
-  display: inline-block;
-  flex-grow: 1;
-  flex-basis: auto;
   font-size: 20px;
   padding: 10px;
 }
