@@ -2,8 +2,11 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('require dotenv');
   require('dotenv').config();
 }
-const key1 = process.env.GOOGLE_KEY;
-const key2 = process.env.DARK_SKY_KEY;
+
+require('dotenv').config();
+console.log(process.env);
+const key1 = 'pWYAAr0tBI1nbA6qjNhzi9Y6MY5ySP0a';
+const key2 = '4fae24c3fba51aed589f8d54e76ef903';
 console.log(`${key1} ${key2}`);
 window.addEventListener('load', () => {
   let long, latitude, location, celcius, temperature;
@@ -27,6 +30,7 @@ window.addEventListener('load', () => {
     document.querySelector('#sunday p')
   ];
   searchBar.addEventListener('click', () => {
+    console.log('Search bar clicked');
     location = document.getElementById('search-form').elements[
       'search-location'
     ].value;
@@ -41,17 +45,14 @@ window.addEventListener('load', () => {
   var convertDegrees = function() {
     console.log('clicked currently');
     if (temperatureSpan.textContent === 'F') {
-      console.log('F');
       temperatureDegree.textContent = celcius;
       temperatureSpan.textContent = 'C';
     } else {
-      console.log('C');
       temperatureSpan.textContent = 'F';
       temperatureDegree.textContent = temperature;
     }
   };
   var convertDegreesWeekly = function() {
-    console.log('clicked qweekly');
     if (weeklyTemperatureSpan.textContent === '(F)') {
       for (let i = 0; i < 7; i++) {
         weeklyTemps[i].textContent = Math.floor(
@@ -71,24 +72,27 @@ window.addEventListener('load', () => {
   };
 
   function getLocation() {
+    console.log('Called getlocation()');
     const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const api = `https://maps.googleapis.com/maps/api/geocode/json?address=${location.replace(
+    const api = `http://www.mapquestapi.com/geocoding/v1/address?key=${key1}&location=${location.replace(
       /_/,
       '+'
-    )}&key=${key1}`;
+    )}`;
     fetch(api)
       .then(response => {
         return response.json();
       })
       .then(data => {
-        const { lat, lng } = data.results[0].geometry.location;
+        console.log('Search for ' + location);
+        console.log(data);
+        const { lat, lng } = data.results[0].locations[0].latLng;
         latitude = lat;
         long = lng;
         locationTimezone.textContent = data.results[0].formatted_address.replace(
           /_/,
           ' '
         );
-        console.log(data);
+        console.log('Data: \n' + data);
       })
       .then(() => {
         getWeather();
@@ -96,18 +100,21 @@ window.addEventListener('load', () => {
   }
 
   if (navigator.geolocation && !location) {
+    console.log('No location searched');
     navigator.geolocation.getCurrentPosition(position => {
-      console.log(position);
       long = position.coords.longitude;
       latitude = position.coords.latitude;
       const proxy = 'https://cors-anywhere.herokuapp.com/';
-      const api = `${proxy}https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${long}&key=${key1}`;
+      const api = `${proxy}http://open.mapquestapi.com/geocoding/v1/reverse?key=${key1}&location=${latitude},${long}&`;
       fetch(api)
         .then(response => {
+          console.log(response);
           return response.json();
         })
         .then(data => {
-          locationTimezone.textContent = data.results[7].formatted_address;
+          console.log(data);
+          locationTimezone.textContent =
+            data.results[0].locations[0].adminArea5;
         });
       getWeather();
     });
@@ -120,6 +127,7 @@ window.addEventListener('load', () => {
   }
 
   function getWeather() {
+    console.log('getWeather()');
     console.log(`${location} lat = ${latitude} long = ${long}`);
     const proxy = 'https://cors-anywhere.herokuapp.com/';
     const api = `${proxy}https://api.darksky.net/forecast/${key2}/${latitude},${long}`;
