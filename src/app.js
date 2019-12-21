@@ -7,6 +7,7 @@ require('dotenv').config();
 console.log(process.env);
 const key1 = 'pWYAAr0tBI1nbA6qjNhzi9Y6MY5ySP0a';
 const key2 = '4fae24c3fba51aed589f8d54e76ef903';
+const proxy = 'https://cors-anywhere.herokuapp.com/';
 console.log(`${key1} ${key2}`);
 window.addEventListener('load', () => {
   let long, latitude, location, celcius, temperature;
@@ -73,8 +74,7 @@ window.addEventListener('load', () => {
 
   function getLocation() {
     console.log('Called getlocation()');
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const api = `${proxy}http://www.mapquestapi.com/geocoding/v1/address?key=${key1}&location=${location.replace(
+    const api = `${proxy}https://www.mapquestapi.com/geocoding/v1/address?key=${key1}&location=${location.replace(
       /_/,
       '+'
     )}`;
@@ -100,7 +100,6 @@ window.addEventListener('load', () => {
     navigator.geolocation.getCurrentPosition(position => {
       long = position.coords.longitude;
       latitude = position.coords.latitude;
-      const proxy = 'https://cors-anywhere.herokuapp.com/';
       const api = `${proxy}http://open.mapquestapi.com/geocoding/v1/reverse?key=${key1}&location=${latitude},${long}&`;
       fetch(api)
         .then(response => {
@@ -124,7 +123,6 @@ window.addEventListener('load', () => {
   function getWeather() {
     console.log('getWeather()');
     console.log(`${location} lat = ${latitude} long = ${long}`);
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
     const api = `${proxy}https://api.darksky.net/forecast/${key2}/${latitude},${long}`;
     fetch(api)
       .then(response => {
