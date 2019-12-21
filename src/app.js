@@ -2,7 +2,6 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('require dotenv');
   require('dotenv').config();
 }
-console.log(process.env);
 const key1 = process.env.GOOGLE_KEY;
 const key2 = process.env.DARK_SKY_KEY;
 console.log(`${key1} ${key2}`);
