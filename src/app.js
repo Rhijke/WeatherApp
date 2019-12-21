@@ -88,11 +88,7 @@ window.addEventListener('load', () => {
         const { lat, lng } = data.results[0].locations[0].latLng;
         latitude = lat;
         long = lng;
-        locationTimezone.textContent = data.results[0].formatted_address.replace(
-          /_/,
-          ' '
-        );
-        console.log('Data: \n' + data);
+        locationTimezone.textContent = `${data.results[0].locations[0].adminArea5}, ${data.results[0].locations[0].adminArea3}`;
       })
       .then(() => {
         getWeather();
