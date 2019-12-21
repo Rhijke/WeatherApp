@@ -8,17 +8,18 @@ const proxy = 'https://cors-anywhere.herokuapp.com/';
 
 window.addEventListener('load', () => {
   let long, latitude, location, celcius, temperature;
-  let temperatureDescription = document.querySelector(
+  const temperatureDescription = document.querySelector(
     '.temperature-description'
   );
-  let temperatureDegree = document.querySelector('.temperature-degree');
-  let locationTimezone = document.querySelector('.location-timezone');
-  let temperatureSection = document.querySelector('.temperature-section');
+  const temperatureDegree = document.querySelector('.temperature-degree');
+  const locationTimezone = document.querySelector('.location-timezone');
+  const temperatureSection = document.querySelector('.temperature-section');
   const temperatureSpan = document.querySelector(
     '.temperature-section span h2'
   );
-  let searchBar = document.querySelector('.search form i');
-  let weeklyTemps = [
+  const searchInput = document.querySelector('.search form input');
+  const searchSubmit = document.querySelector('.search form i');
+  const weeklyTemps = [
     document.querySelector('#monday p'),
     document.querySelector('#tuesday p'),
     document.querySelector('#wednesday p'),
@@ -27,8 +28,23 @@ window.addEventListener('load', () => {
     document.querySelector('#saturday p'),
     document.querySelector('#sunday p')
   ];
-  searchBar.addEventListener('click', () => {
-    console.log('Search bar clicked');
+
+  // Handle weather search
+  searchInput.addEventListener('keydown', e => {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      console.log('Search bar clicked');
+      location = document.getElementById('search-form').elements[
+        'search-location'
+      ].value;
+      getLocation();
+      temperatureDegree.removeEventListener('click', convertDegrees);
+      weeklyTemperature.removeEventListener('click', convertDegreesWeekly);
+    }
+  });
+
+  searchSubmit.addEventListener('click', e => {
+    console.log('Clicked seardch submit');
     location = document.getElementById('search-form').elements[
       'search-location'
     ].value;
