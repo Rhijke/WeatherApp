@@ -1,0 +1,17 @@
+{
+  "name": "WeatherApp",
+  "version": "1.0.0",
+  "description": "Display weather temperature",
+  "main": "index.js",
+  "repository": "https://github.com/Rhijke/WeatherApp.git",
+  "author": "Kaerah Lopez <kaerah.lopez@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  }
+}
