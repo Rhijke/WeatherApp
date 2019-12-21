@@ -2,9 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('require dotenv');
   require('dotenv').config();
 }
-import config from '../config';
-const key1 = config.MAPQUEST_KEY;
-const key2 = config.DARKSKY_KEY;
+
+const key1 = 'pWYAAr0tBI1nbA6qjNhzi9Y6MY5ySP0a';
+const key2 = '4fae24c3fba51aed589f8d54e76ef903';
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
 window.addEventListener('load', () => {
@@ -70,16 +70,23 @@ window.addEventListener('load', () => {
   var convertDegreesWeekly = function() {
     if (weeklyTemperatureSpan.textContent === '(F)') {
       for (let i = 0; i < 7; i++) {
-        weeklyTemps[i].textContent = Math.floor(
-          (weeklyTemps[i].textContent - 32) * (5 / 9)
+        let weeklyTemp = weeklyTemps[i].querySelectorAll('span');
+        weeklyTemp[0].textContent = Math.floor(
+          (weeklyTemp[0].textContent - 32) * (5 / 9)
+        );
+        weeklyTemp[1].textContent = Math.floor(
+          (weeklyTemp[1].textContent - 32) * (5 / 9)
         );
       }
       weeklyTemperatureSpan.textContent = '(C)';
     } else {
       for (let i = 0; i < 7; i++) {
-        weeklyTemps[i].textContent = Math.floor(
-          (weeklyTemps[i].textContent =
-            weeklyTemps[i].textContent * (9 / 5) + 33)
+        let weeklyTemp = weeklyTemps[i].querySelectorAll('span');
+        weeklyTemp[0].textContent = Math.floor(
+          (weeklyTemp[0].textContent = weeklyTemp[0].textContent * (9 / 5) + 33)
+        );
+        weeklyTemp[1].textContent = Math.floor(
+          (weeklyTemp[1].textContent = weeklyTemp[1].textContent * (9 / 5) + 33)
         );
       }
       weeklyTemperatureSpan.textContent = '(F)';
@@ -154,8 +161,12 @@ window.addEventListener('load', () => {
         console.log(data);
         // Initialise weekly temperatures
         for (let i = 0; i < 7; i++) {
-          weeklyTemps[i].textContent = Math.floor(
+          let weeklyTemp = weeklyTemps[i].querySelectorAll('span');
+          weeklyTemp[0].textContent = Math.floor(
             data[i].apparentTemperatureMax
+          );
+          weeklyTemp[1].textContent = Math.floor(
+            data[i].apparentTemperatureMin
           );
         }
         // Set icon
