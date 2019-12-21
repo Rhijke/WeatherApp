@@ -2,8 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('require dotenv');
   require('dotenv').config();
 }
-const key1 = 'pWYAAr0tBI1nbA6qjNhzi9Y6MY5ySP0a';
-const key2 = '4fae24c3fba51aed589f8d54e76ef903';
+import config from '../config';
+const key1 = config.MAPQUEST_KEY;
+const key2 = config.DARKSKY_KEY;
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
 window.addEventListener('load', () => {
