@@ -109,8 +109,7 @@ window.addEventListener('load', () => {
         })
         .then(data => {
           console.log(data);
-          locationTimezone.textContent =
-            data.results[0].locations[0].adminArea5;
+          locationTimezone.textContent = `${data.results[0].locations[0].adminArea5}, ${data.results[0].locations[0].adminArea3}`;
         });
       getWeather();
     });
