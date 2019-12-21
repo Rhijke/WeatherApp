@@ -74,7 +74,7 @@ window.addEventListener('load', () => {
   function getLocation() {
     console.log('Called getlocation()');
     const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const api = `http://www.mapquestapi.com/geocoding/v1/address?key=${key1}&location=${location.replace(
+    const api = `${proxy}http://www.mapquestapi.com/geocoding/v1/address?key=${key1}&location=${location.replace(
       /_/,
       '+'
     )}`;
