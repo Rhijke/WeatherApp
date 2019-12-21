@@ -1,5 +1,5 @@
-var key1 = config.GOOGLE_KEY | process.env.GOOGLE_KEY;
-var key2 = config.DARK_SKY_KEY | process.env.DARK_SKY_KEY;
+var key1 = config ? config.GOOGLE_KEY : process.env.GOOGLE_KEY;
+var key2 = config ? config.DARK_SKY_KEY : process.env.DARK_SKY_KEY;
 window.addEventListener('load', () => {
   let long, latitude, location, celcius, temperature;
   let temperatureDescription = document.querySelector(
