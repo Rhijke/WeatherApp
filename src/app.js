@@ -2,13 +2,10 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('require dotenv');
   require('dotenv').config();
 }
-
-require('dotenv').config();
-console.log(process.env);
 const key1 = 'pWYAAr0tBI1nbA6qjNhzi9Y6MY5ySP0a';
 const key2 = '4fae24c3fba51aed589f8d54e76ef903';
 const proxy = 'https://cors-anywhere.herokuapp.com/';
-console.log(`${key1} ${key2}`);
+
 window.addEventListener('load', () => {
   let long, latitude, location, celcius, temperature;
   let temperatureDescription = document.querySelector(
