@@ -7,8 +7,9 @@ The User can:
 
 - [X] View the temperature in their current location.
 - [X] Look up the temperature in another location.
-- [X] View the weekly weather forecast.
+- [X] View high and low temperatures of the weekly weather forecast.
 - [X] Toggle temperature between Fahrenheit and Celcius.
+- [X] Responsive layout for different screen size devices.
 
 ## Notes
 
