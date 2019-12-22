@@ -2,9 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('require dotenv');
   require('dotenv').config();
 }
-
-const key1 = 'pWYAAr0tBI1nbA6qjNhzi9Y6MY5ySP0a';
-const key2 = '4fae24c3fba51aed589f8d54e76ef903';
+import config from '../config';
+const MAPQUEST_KEY = config.MAPQUEST_KEY;
+const DARKSKY_KEY = config.DARKSKY_KEY;
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
 window.addEventListener('load', () => {
@@ -95,7 +95,7 @@ window.addEventListener('load', () => {
 
   function getLocation() {
     console.log('Called getlocation()');
-    const api = `${proxy}https://www.mapquestapi.com/geocoding/v1/address?key=${key1}&location=${location.replace(
+    const api = `${proxy}https://www.mapquestapi.com/geocoding/v1/address?key=${DARKSKY_KEY}&location=${location.replace(
       /_/,
       '+'
     )}`;
@@ -121,7 +121,7 @@ window.addEventListener('load', () => {
     navigator.geolocation.getCurrentPosition(position => {
       long = position.coords.longitude;
       latitude = position.coords.latitude;
-      const api = `${proxy}http://open.mapquestapi.com/geocoding/v1/reverse?key=${key1}&location=${latitude},${long}&`;
+      const api = `${proxy}http://open.mapquestapi.com/geocoding/v1/reverse?key=${DARKSKY_KEY}&location=${latitude},${long}&`;
       fetch(api)
         .then(response => {
           console.log(response);
@@ -144,7 +144,7 @@ window.addEventListener('load', () => {
   function getWeather() {
     console.log('getWeather()');
     console.log(`${location} lat = ${latitude} long = ${long}`);
-    const api = `${proxy}https://api.darksky.net/forecast/${key2}/${latitude},${long}`;
+    const api = `${proxy}https://api.darksky.net/forecast/$ DARKSKY_KEY}/${latitude},${long}`;
     fetch(api)
       .then(response => {
         return response.json();
