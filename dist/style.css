@@ -6,9 +6,7 @@
 body {
   height: 100vh;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  
   background: lightcoral;
   font-family: sans-serif;
   color: white;
@@ -16,19 +14,22 @@ body {
 .search {
   height: 20vh;
 }
-@media only screen and (max-width: 400px) {
-    .location-section,
-    .temperature-section {
-    height: 20vh;
-    width: 50%;
-    display: flex;
+@media only screen and (min-width: 320px) and (max-width: 960px){
+  body {
     flex-direction: column;
     align-items: center;
   }
+    .location-section,
+    .temperature-section {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:20px;
+  }
 
   .location-section canvas {
-    flex-direction: column;
-    align-self: center;
+    margin-top:20px;
   }
 
   .temperature-weekly div {
@@ -37,6 +38,11 @@ body {
 }
 
 @media only screen and (min-width: 961px) {
+    body {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
     .location-section,
     .temperature-section {
     height: 20vh;
@@ -49,11 +55,6 @@ body {
   .temperature-weekly div {
     display: inline-block;
   }
-}
-
-.temperature-section {
-  flex-direction: column;
-  justify-content: center;
 }
 .temperature-description {
   padding: 0px 20px;
